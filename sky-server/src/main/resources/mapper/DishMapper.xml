@@ -8,6 +8,17 @@
             VALUE
         (#{name},#{categoryId},#{price},#{image},#{description},#{createTime},#{updateTime},#{createUser},#{updateUser},#{status})
     </insert>
+
+
+    <update id="startOrStop" parameterType="dish">
+        update dish
+        <set>
+            <if test="status !=null">status=#{status}</if>
+        </set>
+        where id=#{id}
+    </update>
+
+
     <select id="pageQuery" resultType="com.sky.vo.DishVO">
         SELECT d.*,c.name AS categort_name FROM `dish` d JOIN category c on d.category_id=c.id
         <where>
@@ -23,4 +34,6 @@
         </where>
         order by d.create_time desc
     </select>
+
+
 </mapper>
