@@ -53,4 +53,6 @@ public interface DishMapper {
      * @param dish
      */
     void startOrStop(Dish dish);
+
+    void update(Dish dish);
 }

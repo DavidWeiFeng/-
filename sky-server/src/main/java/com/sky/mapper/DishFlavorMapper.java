@@ -4,6 +4,7 @@ import com.sky.entity.DishFlavor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -15,8 +16,11 @@ public interface DishFlavorMapper {
 
     /**
      * 根據菜品id刪除口味
-     * @param id
+     * @param dishId
      */
-    @Delete("delete  from dish_flavor where  dish_id =#{id}")
-    void deleteByDishId(Long id);
+    @Delete("delete  from dish_flavor where  dish_id =#{dishId}")
+    void deleteByDishId(Long dishId);
+
+    @Select("select * from dish_flavor where  dish_id=#{dishId}")
+    List<DishFlavor> getByDishId(Long dishId);
 }
