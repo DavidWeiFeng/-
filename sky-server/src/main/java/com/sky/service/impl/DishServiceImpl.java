@@ -164,8 +164,6 @@ public class DishServiceImpl implements DishService {
         //查询菜品信息
         Dish dish = new Dish();
         BeanUtils.copyProperties(dishDTO,dish);
-        dish.setUpdateTime(LocalDateTime.now());
-        dish.setUpdateUser(BaseContext.getCurrentId());
         dishMapper.update(dish);
         //删除原有的口味信息
         dishFlavorMapper.deleteByDishId(dishDTO.getId());
